@@ -1,0 +1,17 @@
+POST http://localhost:8000/authv/login/
+Content-Type: application/json
+
+{
+    "email": "test@test.test",
+    "password": "test"
+}
+
+###
+POST http://localhost:8000/auth/signup/
+Content-Type: application/json
+# X-CSRFTOKEN: V3BV2xSsObPI1DDaowreyU4UqZZP6J7t
+
+{
+    "email": "abenezergoo@gmail.com",
+    "password": "asdASD123!@#"
+}

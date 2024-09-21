@@ -1,0 +1,66 @@
+{% extends 'account/base.html' %}
+
+{% block content %}
+<div class="text-center">
+    <h2>Home</h2>
+    <p>Hello {{ user.first_name }}!</p>
+    <p>Your Username : {{ user }}</p>
+
+    <div class="container">
+        {% if user.is_authenticated %}
+        <div class="card mt-5">
+            <div class="card-body">
+                <h5 class="card-title">User Information</h5>
+
+                <p class="card-text">Role: {{ user.role }}</p>
+                <p class="card-text">Email: {{ user.email }}</p>
+
+                {% if user.username %}
+                <p class="card-text">Username: {{ user.username }}</p>
+                {% endif %}
+
+                {% if user.first_name %}
+                <p class="card-text">First Name: {{ user.first_name }}</p>
+                {% endif %}
+
+                {% if user.last_name %}
+                <p class="card-text">Last Name: {{ user.last_name }}</p>
+                {% endif %}
+
+                {% if user.date_joined %}
+                <p class="card-text">Joined: {{ user.date_joined }}</p>
+                {% endif %}
+
+                {% if user.last_login %}
+                <p class="card-text">Last Login: {{ user.last_login }}</p>
+                {% endif %}
+
+                {% if user.is_superuser %}
+                <p class="card-text">Superuser: Yes</p>
+                {% endif %}
+
+                {% if user.role == 'admin' %}
+                <a class="btn btn-primary mb-3" href="/auth/users.html">See Lists of Users</a>
+                {% endif %}
+
+                {% if user.is_staff %}
+                <p class="card-text">Staff: Yes</p>
+                {% endif %}
+
+                {% if user.is_active %}
+                <p class="card-text">Active: Yes</p>
+                {% endif %}
+
+                {% if user.role == 'admin' %}
+                <p class="card-text">Admin: Yes</p>
+                {% else %}
+                <p class="card-text">Admin: No</p>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <a class="btn btn-dark mt-5" href="{% url 'socialaccount_connections' %}">Settings</a>
+</div>
+{% endblock %}
